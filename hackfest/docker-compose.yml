@@ -3,14 +3,14 @@ services:
  db:
   image: mysql:latest
   ports:
-   - "3386:3306"
+   - "3306:3306"
   environment:
    MYSQL_ROOT_PASSWORD: root
    MYSQL_DATABASE: 'rsvp'
    MYSQL_USER: 'root'
    MYSQL_ROOT_PASSWORD: 'root_password'
   volumes:
-   - ./db:/docker-entrypoint-initdb.d/:ro
+   - ./db:/docker-entrypoint-initdb.d/
   networks:
    - rsvpnet
 
