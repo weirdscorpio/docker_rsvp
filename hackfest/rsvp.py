@@ -84,7 +84,11 @@ def rsvp():
 @app.route('/new', methods=['POST'])
 def new():
     item_doc = {'name': request.form['name'], 'email': request.form['email']}
-    db.rsvpdata.insert_one(item_doc)
+    mycursor = mydb.cursor()
+    sql = "INSERT INTO customers (name, email) VALUES (%s, %s)"
+    val = (request.form['name'], request.form['email'])
+    mycursor.execute(sql, val)
+    mydb.commit()
     return redirect(url_for('rsvp'))
 
 @app.route('/api/rsvps', methods=['GET', 'POST'])
