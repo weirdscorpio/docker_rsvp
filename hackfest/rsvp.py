@@ -69,18 +69,15 @@ class RSVP(object):
 
 @app.route('/')
 def rsvp():
-    try: 
-      qmycursor = mydb.cursor()
-      mycursor.execute("SELECT name, email FROM rsvpdata")
-      _items = mycursor.fetchall()
-      mycursor.close()
-      items = [item for item in _items]
-      count = len(items)
-      hostname = socket.gethostname()
-      return render_template('profile.html', counter=count, hostname=hostname,\
+    qmycursor = mydb.cursor()
+    mycursor.execute("SELECT name, email FROM rsvpdata")
+    _items = mycursor.fetchall()
+    mycursor.close()
+    items = [item for item in _items]
+    count = len(items)
+    hostname = socket.gethostname()
+    return render_template('profile.html', counter=count, hostname=hostname,\
                             items=items, TEXT1=TEXT1, TEXT2=TEXT2, ORGANIZER=ORGANIZER)
-    except:
-      print("Error")
 
 @app.route('/new', methods=['POST'])
 def new():
