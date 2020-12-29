@@ -6,9 +6,9 @@ services:
    - "3306:3306"
   environment:
    MYSQL_ROOT_PASSWORD: root
-   MYSQL_DATABASE: 'rsvp'
-   MYSQL_USER: 'root'
-   MYSQL_ROOT_PASSWORD: 'root_password'
+   MYSQL_USER: insta_admin
+   MYSQL_PASSWORD: insta2018
+   MYSQL_DATABASE: RSVP
   volumes:
    - ./db:/docker-entrypoint-initdb.d/
   networks:
