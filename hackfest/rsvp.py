@@ -85,7 +85,7 @@ def rsvp():
 def new():
     item_doc = {'name': request.form['name'], 'email': request.form['email']}
     mycursor = mydb.cursor()
-    sql = "INSERT INTO customers (name, email) VALUES (%s, %s)"
+    sql = "INSERT INTO rsvpdata (name, email) VALUES (%s, %s)"
     val = (request.form['name'], request.form['email'])
     mycursor.execute(sql, val)
     mydb.commit()
