@@ -4,8 +4,7 @@ import socket
 import os
 import json
 import mysql.connector
-import time
-time.sleep(30)
+
 
 app = Flask(__name__)
 
