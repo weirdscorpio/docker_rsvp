@@ -15,13 +15,15 @@ ORGANIZER=os.environ.get('ORGANIZER', "UVCE")
 
 config = {
         'user': 'root',
-        'password': 'root_password',
-        'host': 'db',
-        'port': '3306',
-        'database': 'rsvp',
-    }
+         'password': 'password',
+         'host': 'db',
+         'port': '3306',
+         'database': 'RSVP',
+      }
 
-connection = mysql.connector.connect(**config)
+mydb = mysql.connector.connect(user='insta_admin', password='insta2018',
+                              host='db', database='RSVP',
+                              auth_plugin='mysql_native_password')
 
 
 '''
@@ -68,10 +70,10 @@ class RSVP(object):
 @app.route('/')
 def rsvp():
     try: 
-      query = "SELECT * FROM rsvpdata"
-      corr = connection.cursor()
-      corr.execute(query)
-      _items = corr.fetchall()
+      qmycursor = mydb.cursor()
+      mycursor.execute("SELECT name, email FROM rsvpdata")
+      _items = mycursor.fetchall()
+      mycursor.close()
       items = [item for item in _items]
       count = len(items)
       hostname = socket.gethostname()
